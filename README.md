@@ -14,6 +14,11 @@
 - 💅 Styled-Components
 - Responsive Design
 
+## Live demo
+
+[Hosted in Netlify](https://getflix-app.netlify.app/)
+
+
 ## Instructions to run
 
 ### 1. Install all the dependencies
