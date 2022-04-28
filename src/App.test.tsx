@@ -99,7 +99,9 @@ describe('Getflix test suite', () => {
     const { getByText } = render(<MovieDetails />);
 
     await waitFor(() =>
-      expect(fetch).toHaveBeenCalledWith(expect.stringContaining('someId')),
+      expect(fetch).toHaveBeenCalledWith(
+        'https://www.omdbapi.com/?apikey=320f6ab2&i=someId',
+      ),
     );
     await waitFor(() =>
       expect(getByText(mockOMDBResponseById.Title)).toBeTruthy(),
