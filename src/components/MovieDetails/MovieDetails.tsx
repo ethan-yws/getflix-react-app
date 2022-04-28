@@ -83,7 +83,7 @@ export const MovieDetails: React.FC = () => {
         {details['Ratings'] &&
           Array.isArray(details['Ratings']) &&
           details['Ratings'].map((item: any) => (
-            <Rating>
+            <Rating key={item['Source']}>
               <strong>{item['Source']}</strong>
               {item['Value']}
             </Rating>
