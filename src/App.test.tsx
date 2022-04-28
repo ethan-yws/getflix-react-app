@@ -3,6 +3,11 @@ import { render, waitFor } from '@testing-library/react';
 import App from './App';
 import { MovieDetails } from 'components/MovieDetails';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn().mockReturnValue({ imdbId: 'someId' }),
+}));
+
 const mockOMDBResponseByTitle = {
   Title: 'Halo',
   Year: '2022–',
@@ -91,15 +96,11 @@ describe('Getflix test suite', () => {
       json: () => Promise.resolve(mockOMDBResponseById),
     });
 
-    jest.mock('react-router-dom', () => ({
-      ...jest.requireActual('react-router-dom'),
-      useParams: () => ({
-        imdbId: 'someId',
-      }),
-    }));
-
     const { getByText } = render(<MovieDetails />);
 
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(expect.stringContaining('someId')),
+    );
     await waitFor(() =>
       expect(getByText(mockOMDBResponseById.Title)).toBeTruthy(),
     );
