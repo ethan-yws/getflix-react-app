@@ -17,6 +17,7 @@ export const Wrapper = styled.div<{ bgImage: string }>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: 0.5s;
 
   @media screen and (max-width: 768px) {
     margin: 0;
@@ -51,6 +52,7 @@ export const Input = styled.input`
   border-radius: 5px;
   border: 1px solid grey;
   width: 300px;
+  transition: 0.5s;
 
   @media screen and (max-width: 768px) {
     width: 150px;
